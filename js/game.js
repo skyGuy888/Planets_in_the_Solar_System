@@ -628,30 +628,30 @@ class StarOrderGame {
     |--------------------------------------------------------------------------
     */
 
-    // setStartPosition(el, pos) {
-
-    //     el.style.left = `${pos.x}%`;
-
-    //     el.style.top = `${pos.y}%`;
-    // }
-
-
     setStartPosition(el, pos) {
 
-        const sunX = 50;
-        const sunY = 5;
+        el.style.left = `${pos.x}%`;
 
-        const scale = 0.65;
-
-        const x =
-            sunX + (pos.x - sunX) * scale;
-
-        const y =
-            sunY + (pos.y - sunY) * scale;
-
-        el.style.left = `${x}%`;
-        el.style.top = `${y}%`;
+        el.style.top = `${pos.y}%`;
     }
+
+
+    // setStartPosition(el, pos) {
+
+    //     const sunX = 50;
+    //     const sunY = 5;
+
+    //     const scale = 0.65;
+
+    //     const x =
+    //         sunX + (pos.x - sunX) * scale;
+
+    //     const y =
+    //         sunY + (pos.y - sunY) * scale;
+
+    //     el.style.left = `${x}%`;
+    //     el.style.top = `${y}%`;
+    // }
 
 
 
