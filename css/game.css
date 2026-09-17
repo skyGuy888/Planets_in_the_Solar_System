@@ -1329,3 +1329,288 @@ h1 {
         opacity: 0;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   START SCREEN
+========================= */
+
+.start-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at center,
+            rgba(20, 40, 80, 0.35),
+            rgba(0, 0, 0, 0.96) 70%);
+
+    transition: opacity 0.6s ease;
+}
+
+.start-screen.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.start-content {
+    text-align: center;
+    color: white;
+
+    animation: startAppear 1s ease;
+}
+
+.start-content h1 {
+    margin: 0 0 15px;
+
+    font-size: 56px;
+    font-weight: 700;
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 10px rgba(100, 180, 255, 0.8),
+        0 0 30px rgba(50, 120, 255, 0.5);
+}
+
+.start-content p {
+    margin-bottom: 45px;
+
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================
+   START BUTTON
+========================= */
+
+.start-game-btn {
+    min-width: 280px;
+    padding: 18px 40px;
+
+    border: 2px solid rgba(100, 200, 255, 0.8);
+    border-radius: 12px;
+
+    background: rgba(20, 80, 140, 0.35);
+    color: white;
+
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 15px rgba(50, 160, 255, 0.5),
+        inset 0 0 15px rgba(50, 160, 255, 0.15);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.start-game-btn span {
+    margin-right: 10px;
+}
+
+.start-game-btn:hover {
+    transform: scale(1.06);
+
+    background: rgba(40, 130, 220, 0.55);
+
+    box-shadow:
+        0 0 25px rgba(80, 190, 255, 0.8),
+        0 0 60px rgba(50, 120, 255, 0.35);
+}
+
+.start-game-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 180px;
+    font-weight: bold;
+
+    color: white;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    text-shadow:
+        0 0 20px rgba(100, 200, 255, 1),
+        0 0 60px rgba(50, 120, 255, 0.8);
+
+    animation: countdownPulse 1s ease;
+}
+
+.countdown.hidden {
+    display: none;
+}
+
+@keyframes countdownPulse {
+    0% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes startAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#player-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 12px 24px;
+    margin: 20px auto;
+
+    border-radius: 30px;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+#player-status.waiting {
+    background: rgba(255, 180, 0, 0.15);
+    border: 2px solid rgba(255, 180, 0, 0.5);
+}
+
+#player-status.detected {
+    background: rgba(0, 255, 120, 0.15);
+    border: 2px solid rgba(0, 255, 120, 0.6);
+}
+
+#player-status.lost {
+    background: rgba(255, 60, 60, 0.15);
+    border: 2px solid rgba(255, 60, 60, 0.6);
+}
+
+.status-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #888;
+}
+
+#player-status.detected .status-dot {
+    background: #00ff78;
+    box-shadow: 0 0 15px #00ff78;
+}
+
+#player-status.waiting .status-dot {
+    background: #ffb400;
+    box-shadow: 0 0 15px #ffb400;
+}
+
+#player-status.lost .status-dot {
+    background: #ff3c3c;
+    box-shadow: 0 0 15px #ff3c3c;
+}
+
+
+
+
+
+
+#start-game-btn {
+    position: relative;
+
+    min-width: 300px;
+    padding: 22px 50px;
+
+    border: 3px solid white;
+    border-radius: 18px;
+
+    background: rgba(0, 120, 255, 0.25);
+    color: white;
+
+    font-size: 32px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+#start-game-btn.kinect-hover {
+    background: rgba(0, 200, 255, 0.65);
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(0, 200, 255, 0.8);
+}
