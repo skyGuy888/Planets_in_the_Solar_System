@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Planets in the Solar System</title>
+
+    <link rel="stylesheet" href="./css/game.css">
+
+</head>
+
+
+<body>
+
+    <main id="game">
+
+        <!-- Background -->
+        <div id="space-bg"></div>
+
+
+        <!-- =====================================================
+         HUD
+    ====================================================== -->
+
+        <header class="hud">
+
+            <div class="hud-title">
+
+                <div class="eyebrow">
+                    SOLAR SYSTEM MISSION
+                </div>
+
+                <h1>
+                    STAR ORDER
+                </h1>
+
+            </div>
+
+
+            <div class="timer-panel">
+
+                <div class="timer-label">
+                    TIME
+                </div>
+
+                <div id="timer">
+                    60
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+         PLAY FIELD
+    ====================================================== -->
+
+        <section id="playfield">
+
+
+            <!-- SUN -->
+
+            <div id="sun" class="sun">
+
+                <div class="sun-core">
+                    <!-- ☀ -->
+                    <!-- <img src="./media/planets/sun.png" alt=""> -->
+                </div>
+
+                <div class="sun-label">
+                    SUN
+                </div>
+
+            </div>
+
+
+            <!-- PLANETS -->
+
+            <div id="planet-layer"></div>
+
+
+            <!-- DROP SLOTS -->
+
+            <div id="slot-layer"></div>
+
+
+            <!-- INSTRUCTION -->
+
+            <!-- <div id="instruction">
+
+                <div id="instruction-main">
+
+                    Arrange the planets
+                    from the Sun outward
+
+                </div>
+
+                <div id="instruction-sub">
+
+                    Grab a planet,
+                    drag it to the correct slot,
+                    then release
+
+                </div>
+
+            </div> -->
+
+
+            <!-- =================================================
+             HAND CURSOR
+        ================================================== -->
+
+            <div id="hand-cursor">
+
+                <div class="hand-ring"></div>
+
+                <div class="hand-dot"></div>
+
+                <div id="hand-state">
+                    OPEN
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+         GAME OVER / SUCCESS
+    ====================================================== -->
+
+        <section id="overlay" class="hidden">
+
+            <div class="result-card">
+
+                <div id="result-icon">
+                    ★
+                </div>
+
+
+                <h2 id="result-title">
+                    MISSION COMPLETE
+                </h2>
+
+
+                <p id="result-message">
+                    All planets are in the correct order.
+                </p>
+
+
+                <!-- <button id="restart-btn">
+                    START AGAIN
+                </button> -->
+
+
+                <div id="restartCountdown">
+                    <div id="countdownNumber">3</div>
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+         DEBUG
+    ====================================================== -->
+
+        <div id="debug-panel">
+
+            <span>
+
+                KINECT:
+
+                <b id="kinect-status">
+                    SIMULATION
+                </b>
+
+            </span>
+
+
+            <span>
+
+                NEXT:
+
+                <b id="next-planet">
+                    MERCURY
+                </b>
+
+            </span>
+
+        </div>
+
+
+    </main>
+
+
+
+
+
+
+
+
+    <!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+    <script src="./js/planets.js"></script>
+
+    <script src="./js/timer.js"></script>
+
+    <script src="./js/effects.js"></script>
+
+    <script src="./js/kinect.js"></script>
+
+    <script src="./js/game.js"></script>
+
+    <!-- <script src="./test.js"></script> -->
+
+
+</body>
+
+</html>
