@@ -147,10 +147,24 @@ function checkDrop(planet) {
 
 
 
+
+
+
+
+
+
+
 class StarOrderGame {
 
 
     constructor() {
+
+
+        this.gameStarted = false;
+
+        // ของเดิมของนาย
+        this.init();
+
 
 
         //Game Audio ----------------------------------------------------------------------
@@ -198,8 +212,6 @@ class StarOrderGame {
         this.touchId = null;
         this.touchDragging = false;
         this.setupTouchControls();
-
-
 
 
 
@@ -377,6 +389,15 @@ class StarOrderGame {
 
 
 
+
+        // document.querySelector("#restart-btn").addEventListener("click", async () => {
+        //     await this.enterFullscreen();
+
+        //     this.start();
+        // });
+
+
+
         /*
         |--------------------------------------------------------------------------
         | Window Resize
@@ -410,10 +431,158 @@ class StarOrderGame {
         | Start
         |--------------------------------------------------------------------------
         */
-        this.enterFullscreen();
-        this.start();
+        // this.start();
+
+
+
+        const startButton = document.getElementById('start-game-btn');
+
+        if (startButton) {
+
+            startButton.addEventListener('click', () => {
+
+                window.starOrderGame.startGame();
+
+                setTimeout(() => {
+
+                    this.start();
+
+                }, 3000);
+
+
+            });
+
+        }
+
+
+        //enterFullscreen();
+
+
 
     }
+
+
+
+
+
+
+
+
+    init() {
+
+        // =========================
+        // ของเดิม
+        // =========================
+
+        // this.setupPlanets();
+        // this.setupSlots();
+
+        // สำคัญ !!!
+        // ยังไม่เริ่ม timer
+        // ยังไม่เริ่ม game loop
+
+        this.showStartScreen();
+    }
+
+
+
+
+    showStartScreen() {
+
+        const startScreen = document.getElementById('start-screen');
+
+        if (startScreen) {
+            startScreen.classList.remove('hide');
+        }
+
+        this.gameStarted = false;
+    }
+
+
+    startGame() {
+
+        if (this.gameStarted) return;
+
+        this.gameStarted = true;
+
+        const startScreen = document.getElementById('start-screen');
+
+        if (startScreen) {
+            startScreen.classList.add('hide');
+        }
+
+        // Countdown ก่อนเริ่มเกม
+        this.startCountdown();
+    }
+
+
+    startCountdown() {
+
+        const countdown = document.getElementById('countdown');
+
+        if (!countdown) {
+            this.beginGameplay();
+            return;
+        }
+
+        let count = 3;
+
+        countdown.classList.remove('hidden');
+        countdown.textContent = count;
+
+        const timer = setInterval(() => {
+
+            count--;
+
+            if (count > 0) {
+
+                countdown.textContent = count;
+
+                // restart animation
+                countdown.style.animation = 'none';
+                countdown.offsetHeight;
+                countdown.style.animation = 'countdownPulse 1s ease';
+
+            } else {
+
+                clearInterval(timer);
+
+                countdown.textContent = 'GO!';
+
+                countdown.style.animation = 'none';
+                countdown.offsetHeight;
+                countdown.style.animation = 'countdownPulse 1s ease';
+
+                setTimeout(() => {
+
+                    countdown.classList.add('hidden');
+
+                    this.beginGameplay();
+
+                }, 700);
+            }
+
+        }, 1000);
+    }
+
+
+    beginGameplay() {
+
+        console.log('[GAME] START');
+
+        // เริ่ม Timer
+        //this.startTimer();
+
+        // เริ่มระบบ Kinect / interaction
+        //this.enableGameplay();
+
+        // BGM
+        // if (typeof playBGM === 'function') {
+        //     playBGM();
+        // }
+    }
+
+
 
 
 
@@ -2391,14 +2560,25 @@ class StarOrderGame {
 |--------------------------------------------------------------------------
 */
 
-window.addEventListener(
-    "DOMContentLoaded",
-    () => {
+// window.addEventListener(
+//     "DOMContentLoaded",
+//     () => {
 
-        window.starOrderGame = new StarOrderGame();
+//         window.starOrderGame = new StarOrderGame();
 
-    }
-);
+
+//         this.enterFullscreen();
+
+//     }
+// );
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.starOrderGame = new StarOrderGame();
+});
+
 
 
 
