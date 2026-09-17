@@ -410,10 +410,26 @@ class StarOrderGame {
         | Start
         |--------------------------------------------------------------------------
         */
-
+        this.enterFullscreen();
         this.start();
 
     }
+
+
+
+
+
+
+    enterFullscreen() {
+        const el = document.documentElement;
+
+        if (!document.fullscreenElement) {
+            el.requestFullscreen().catch(err => {
+                console.warn("[FULLSCREEN]", err);
+            });
+        }
+    }
+
 
 
 
