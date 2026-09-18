@@ -181,7 +181,7 @@ class StarOrderGame {
 
         // BGM เล่นวน
         this.audio.bgm.loop = true;
-        this.audio.bgm.volume = 0.3;
+        this.audio.bgm.volume = 0.5;
         this.audioUnlocked = false;
 
         // Effect volume
@@ -643,8 +643,8 @@ class StarOrderGame {
                 const bgm = this.audio.bgm;
 
                 bgm.muted = true;
-                await bgm.play();
-                bgm.pause();
+                bgm.play();
+                //bgm.pause();
                 bgm.currentTime = 0;
                 bgm.muted = false;
 
@@ -1074,13 +1074,13 @@ class StarOrderGame {
 
 
 
-        if (this.audioUnlocked) {
+        //if (this.audioUnlocked) {
             this.audio.bgm.currentTime = 0;
 
             this.audio.bgm.play().catch(err => {
                 console.warn("[BGM]", err);
             });
-        }
+        //}
 
 
         /*
